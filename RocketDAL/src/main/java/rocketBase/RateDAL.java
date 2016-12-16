@@ -34,7 +34,9 @@ public class RateDAL {
 				RateDomainModel rte = (RateDomainModel) iterator.next();
 				alRates.add(rte);
 			}
-			
+			String hql = "FROM RateDoaminModel";
+			Query query = session.createQuery(hql);
+			List results = query.list();
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
